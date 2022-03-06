@@ -1,7 +1,9 @@
 package com.spring.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,8 @@ public class Category implements Serializable{
 	private Long id;
 	private String name;
 
+	private Set<Product> products = new HashSet<>();
+	
 	public Category() {
 	}
 
@@ -62,6 +66,9 @@ public class Category implements Serializable{
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
 }
