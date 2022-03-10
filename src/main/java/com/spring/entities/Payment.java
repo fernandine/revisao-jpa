@@ -12,7 +12,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import net.bytebuddy.utility.dispatcher.JavaDispatcher.Instance;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_payment")
@@ -22,16 +22,17 @@ public class Payment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Instance moment;
-	
+	private Instant moment;
+
+	@JsonIgnore
 	@OneToOne
 	@MapsId
 	private Order order;
-	
-	public Payment(Object object, Instant instant, Order o1) {
+
+	public Payment() {
 	}
 
-	public Payment(Long id, Instance moment, Order order) {
+	public Payment(Long id, Instant moment, Order order) {
 		super();
 		this.id = id;
 		this.moment = moment;
@@ -46,11 +47,11 @@ public class Payment implements Serializable {
 		this.id = id;
 	}
 
-	public Instance getMoment() {
+	public Instant getMoment() {
 		return moment;
 	}
 
-	public void setMoment(Instance moment) {
+	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
 
@@ -78,9 +79,5 @@ public class Payment implements Serializable {
 		Payment other = (Payment) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
 
 }
