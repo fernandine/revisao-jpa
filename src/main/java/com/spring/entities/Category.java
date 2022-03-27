@@ -1,4 +1,4 @@
-package com.spring.entities;
+ package com.spring.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -35,9 +35,8 @@ public class Category implements Serializable{
 		super();
 		this.id = id;
 		this.name = name;
-	}
-	
-	
+	} 
+
 
 	public Long getId() {
 		return id;
